@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherryhill Pharmacy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: black;
+        }
+
+        header {
+            background-color: white;
+            color: #D22630;
+            padding: 10px 0;
+            vertical-align: middle;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 0px solid #D22630;
+            flex-direction: column;
+        }
+        
+        .header-line {
+    border: 0;
+    height: 5px; /* Adjust height as needed */
+    background-color: #D22630; /* The color of the line */
+    margin: 10px 0; /* Adjust spacing as needed */
+    width: 100%; /* Make the line span the full width */
+  }
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-symbol {
+            width: 55px;
+            height: 55px;
+        }
+
+        .header-text {
+            text-align: left;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header-band {
+            background-color: #d22630;
+            color: white;
+            padding: 0px;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-band a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .header-band .address {
+            flex: 1;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .header-band .phone {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-band .email {
+            flex: 1;
+            text-align: right;
+            padding-right: 20px;
+        }
+
+        .info, .services, .hours {
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .info p, .hours p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .info img {
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .services h2, .hours h2 {
+            color: #D22630;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+  
+        .quote-box {
+            background-color: #f1f1f1;
+            color: #333;
+            font-style: italic;
+            font-weight: bold;
+            padding: 20px;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            border-right: 5px solid #D22630;
+            border-left: 5px solid #D22630;
+            border-bottom: 5px solid #D22630;
+            border-top: 5px solid #D22630;
+            border-radius: 5px;
+        }
+
+        .service-button {
+            width: 100%;
+            background-color: #eaeaea;
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border-radius: 25px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .service-button .plus {
+            color: red;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .service-button:hover {
+            background-color: #d22630;
+            color: white;
+        }
+        
+        .service-button:hover .plus {
+            color: white;
+        }
+
+        .description {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+            text-align: left;
+            border-radius: 10px;
+        }
+
+        .service-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .service-item {
+            width: 48%;
+            margin-bottom: 10px;
+        }
+
+        .service-item-full {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        
+         .service-item-full .service-button {
+            width: 48%;
+        }   
+
+        .top-button {
+            display: none; 
+            position: fixed;
+            bottom: 1px;
+            left: 1px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: #232230;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .top-button:hover {
+            background-color: #555;
+        }
+
+        .contact-section {
+            background-color: #D22630;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .contact-section img {
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
+
+        .contact-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact-section img.map {
+            width: 100%;
+            height: auto;
+        }
+        
+        .transfer-box {
+            background: linear-gradient(0deg, #000000, #434343);
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .transfer-box:hover {
+            background: linear-gradient(360deg, #434343, #000000);
+        }
+        
+       .contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.contact-map, .contact-info {
+    flex: 1;
+    min-width: 300px;
+    margin: 10px;
+}
+
+.contact-map img {
+    width: 100%;
+    height: auto;
+}
+
+.contact-info {
+    background-color: #D22630;
+    color: white;
+    padding: 0px;
+    text-align: center;
+}
+
+.contact-info h2 {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.contact-info img {
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+}
+        
+.hours {
+    text-align: center;
+    padding: 20px;
+}
+
+.hours-list {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.2em;
+    color: #333;
+    width: 300px;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.day {
+    font-weight: bold;
+    flex-basis: 80%;
+    text-align: left;
+}
+
+.separator {
+    font-weight: bold;
+    flex-basis: 5%;
+    text-align: center;
+}
+
+.time {
+    font-weight: normal;
+    flex-basis: 50%;
+    text-align: right;
+}
+@media (max-width: 768px) {
+    .contact-info {
+        font-size: 1em;
+    }
+}
+    </style>
+</head>
+<body>
+   <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>CHERRYHILL PHARMACY</h1>
+            </div>
+            <img src="symbol.png" alt="Symbol" class="header-symbol">
+        </div>
+    </header>
+    <hr class="header-line">
+       <!-- <div class="header-band">
+            <span><a href="https://www.google.com/maps/dir//Cherryhill+Pharmacy,+101+Cherryhill+Blvd+%23114,+London,+ON+N6H+4S4/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x882ef100769e9c69:0x286e828547b7e3b?sa=X&ved=1t:57443&ictx=111">114-101 Cherryhill Blvd, London, ON N6H 4S4</a></span>
+            <span><a href="tel:+15196734554">519-673-4554</a></span>
+            <span><a href="mailto:cherryhillpharmacy1@gmail.com">cherryhillpharmacy1@gmail.com</a></span>
+        </div>
+    </header> -->
+    <section class="services">
+         <div class="quote-box" style="display: flex; align-items: center;"><video autoplay loop muted playsinline style="pointer-events: none; width: 50%; height: 50%;">
+<source src="slides.mp4" type="video/mp4"/></video>
+             
+             <!-- <img src="bottles.jpg" width=50% height=auto alt="Cherryhill Pharmacy Entrance" style="display: block; margin-left: auto; margin-right: auto;"> -->
+        <blockquote style="font-style: italic; font-weight: bold; padding-left: 10px;">"Our pharmacy is proud to serve London & Surrounding Areas. We look forward to being an important part of the community! We place your health and well-being at the forefront of our services."</blockquote>
+        </div>
+        <div class="transfer-box"><a href="tel:+15196734554" style="color: white; text-decoration: none" >
+            Transfer Your Prescriptions to our pharmacy today. Speak to our staff!
+        </a></div>
+         <h2>OUR SERVICES</h2>
+        <div class="service-container">
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Minor Ailments Prescribing <span class="plus">+</span>
+                </button>
+                <div class="description">
+                   Minor ailments are described as health conditions that can be managed with minimal treatment and/or self-care strategies. For more information, please feel free to visit <a href="https://www.ocpinfo.com/practice-education/expanded-scope-of-practice/minor-ailment/
+"  target="_blank" rel="noopener">OCP's minor ailment website.</a> 
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Compounding Services<span class="plus">+</span>
+                </button>
+                <div class="description">
+                    Our pharmacy provides a comprehensive range of compounding services to meet your unique medication needs. Our expert compounding pharmacists are committed to delivering the highest quality compounded medications to ensure your health and well-being.
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Compliance Packaging <span class="plus">+</span>
+                </button>
+                <div class="description">
+                    Having trouble organizing your medication?  Let us do it for you!  We can package your medication in an easy-to-use package which is so much easier than sorting through your Rx bottles. It also helps to keep track of your medications, refills, and any changes to your medication.
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Seniors Discounts <span class="plus">+</span>
+                </button>
+                <div class="description">
+                    Everyday 10% Seniors Discounts on Over-the-counter (OTC) products! 
+                    Enjoy the Special 20% Seniors Discount Every Tuesday on Over-the-counter (OTC) products!
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                   Immunizations & Vaccines <span class="plus">+</span>
+                </button>
+                <div class="description">
+                    Our trained pharmacists are available to administer Flu, COVID-19, Travel vaccines, and other Prescribed vaccines in-store. Please book your appointment in advance to ensure quick and convenient service. Walk-ins are also welcome!
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Medication Reviews <span class="plus">+</span>
+                </button>
+                <div class="description">
+                   We offer medication reviews for all our patients as part of our patient-care services. These reviews aim to enhance your understanding of your medication regimen, identify and resolve any drug therapy issues, and improve your overall health outcomes.
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Free Local Delivery <span class="plus">+</span>
+                </button>
+                <div class="description">
+                    Are you having trouble coming in for your refills, or are you too exhausted to make an extra stop after a long workday? No worries, we offer free Prescriptions Delivery anywhere in London, right to your door for your convenience, ensuring you never miss a dose!
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                     Easy prescription transfers<span class="plus">+</span>
+                </button>
+                <div class="description">
+                  Transferring your prescriptions to Cherryhill Pharmacy is easy. Just give us a call, and we will handle the rest.
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    Fast, Friendly and Personalized Service <span class="plus">+</span>
+                </button>
+                <div class="description">
+                    At our pharmacy, we are committed to providing fast, friendly, and personalized service. Our dedicated team works efficiently to meet your needs while offering a warm and welcoming atmosphere. We tailor our approach to ensure you receive the best care and attention, making each visit a positive experience.
+                </div>
+            </div>
+            <div class="service-item">
+                <button class="service-button" onclick="toggleDescription(this)">
+                    All Drug Plans Accepted <span class="plus">+</span>
+                </button>
+                <div class="description">
+                    We accept all drug plans to fill your prescriptions.
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hours">
+        <h2>Pharmacy Hours</h2>
+        <div class="hours-list">
+        <div class="hours-item">
+            <span class="day">Monday to Friday</span>
+            <span class="separator">|</span>
+            <span class="time">9 AM - 5 PM</span>
+        </div>
+        <div class="hours-item">
+            <span class="day">Saturday</span>
+            <span class="separator">|</span>
+            <span class="time">9 AM - 1 PM</span>
+        </div>
+        <div class="hours-item">
+            <span class="day">Sunday</span>
+            <span class="separator">|</span>
+            <span class="time">CLOSED</span>
+        </div>
+    </div>
+    </section>
+    <section class="contact-section">
+       <div class="contact-container">
+        <div class="contact-map">
+            <a href="https://www.google.com/maps/dir//Cherryhill+Pharmacy,+101+Cherryhill+Blvd+%23114,+London,+ON+N6H+4S4/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x882ef100769e9c69:0x286e828547b7e3b?sa=X&amp;ved=1t:57443&amp;ictx=111" target="_blank" rel="noopener">
+                <img src="map.png" alt="Map" class="map" />
+            </a>
+        </div>
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+                        <p><a href="tel:+15196734554"><img src="phone.png" alt="Phone Icon" /></a><span style="text-decoration: underline;"><a href="tel:+15196734554">519-673-4554</a></span></p>
+                        <p><a href="fax:+15196735665"><img src="fax1.png" alt="Fax Icon" /> <span style="text-decoration: underline;">519-673-5665</span></a></p>
+                        <p><a href="mailto:cherryhillpharmacy1@gmail.com"><img src="mail.png" alt="Email Icon" /> <span style="text-decoration: underline;">cherryhillpharmacy1@gmail.com</span></a></p>
+                        <p><a href="https://www.google.com/maps/dir//Cherryhill+Pharmacy,+101+Cherryhill+Blvd+%23114,+London,+ON+N6H+4S4/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x882ef100769e9c69:0x286e828547b7e3b?sa=X&amp;amp;ved=1t:57443&amp;amp;ictx=111" target="_blank" rel="noopener"><img src="location.png" alt="Location Icon" /><span style="text-decoration: underline;">114-101 Cherryhill Blvd, London, ON N6H4S4</span></a></p>
+                        <p><a href="http://www.cherryhillpharmacy.ca"><img src="web.png" alt="Website Icon" /><span style="text-decoration: underline;">www.cherryhillpharmacy.ca</span></a></p>
+        </div>
+    </div>
+</section> <button onclick="topFunction()" id="topBtn" class="top-button" title="Go to top">Top</button>
+    <script>
+        function toggleDescription(button) {
+            const description = button.nextElementSibling;
+            if (description.style.display === "block") {
+                description.style.display = "none";
+                button.querySelector('.plus').textContent = "+";
+            } else {
+                description.style.display = "block";
+                button.querySelector('.plus').textContent = "-";
+            }
+        }
+
+    </script>
+</body>
+</html>
