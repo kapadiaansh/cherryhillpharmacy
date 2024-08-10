@@ -216,32 +216,6 @@
             padding: 20px;
             text-align: center;
         }
-
-        .contact-section h2 {
-            margin-bottom: 20px;
-        }
-
-        .contact-section p {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-
-        .contact-section img {
-            vertical-align: middle;
-            margin-right: 10px;
-            width: 24px;
-            height: 24px;
-        }
-
-        .contact-section a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .contact-section img.map {
-            width: 100%;
-            height: auto;
-        }
         
         .transfer-box {
             background: linear-gradient(0deg, #000000, #434343);
@@ -259,124 +233,126 @@
             background: linear-gradient(360deg, #434343, #000000);
         }
         
-       .contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-sizing: border-box;
-}
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
 
-.contact-map, .contact-info {
-    flex: 1;
-    min-width: 300px;
-    margin: 10px;
-}
+        .contact-map, .contact-info {
+            flex: 1;
+            min-width: 300px;
+            margin: 10px;
+        }
 
-.contact-map img {
-    width: 100%;
-    height: auto;
-}
+        .contact-map img {
+            width: 100%;
+            height: auto;
+        }
 
-.contact-info {
-    background-color: #D22630;
-    color: white;
-    padding: 0px;
-    text-align: center;
-}
+        .contact-info {
+            background-color: #D22630;
+            color: white;
+            padding: 0px;
+            text-align: justify;
+        }
 
-.contact-info h2 {
-    margin-bottom: 20px;
-}
+        .contact-info h2 {
+            margin-bottom: 10px;
+            margin-left: 30px
+        }
 
-.contact-info p {
-    font-size: 1.2em;
-    margin: 10px 0;
-}
+        .contact-info p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
 
-.contact-info img {
-    vertical-align: middle;
-    margin-right: 10px;
-    width: 24px;
-    height: 24px;
-}
+        .contact-info img {
+            vertical-align: left;
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+        }
 
-.contact-info a {
-    color: white;
-    text-decoration: none;
-}
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+        .hours {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hours-list {
+            display: inline-block;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+            width: 300px;
+        }
+
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .day {
+            font-weight: bold;
+            flex-basis: 80%;
+            text-align: left;
+        }
+
+        .separator {
+            font-weight: bold;
+            flex-basis: 5%;
+            text-align: center;
+        }
+
+        .time {
+            font-weight: normal;
+            flex-basis: 50%;
+            text-align: right;
+        }
         
-.hours {
-    text-align: center;
-    padding: 20px;
-}
+    @media (max-width: 768px) {
+        .service-container {
+            flex-direction: column;
+            align-items: stretch;
+        }  
 
-.hours-list {
-    display: inline-block;
-    text-align: center;
-    font-size: 1.2em;
-    color: #333;
-    width: 300px;
-}
+        .service-item {
+            width: 100%;
+            margin-bottom: 10px;
+        }
 
-.hours-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
+        .service-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            box-sizing: border-box;
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: justify;
+            position: relative;
+        }
 
-.day {
-    font-weight: bold;
-    flex-basis: 80%;
-    text-align: left;
-}
+        .service-button .plus {
+            font-size: 1.5em;
+            font-weight: bold;
+            position: absolute;
+            right: 15px;
+        }
 
-.separator {
-    font-weight: bold;
-    flex-basis: 5%;
-    text-align: center;
-}
-
-.time {
-    font-weight: normal;
-    flex-basis: 50%;
-    text-align: right;
-}
-@media (max-width: 768px) {
-    .service-container {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .service-item {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-
-    .service-button {
-        width: 100%;
-        padding: 15px;
-        font-size: 1.2em;
-        box-sizing: border-box;
-        border-radius: 25px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
-
-    .service-button .plus {
-        font-size: 1.5em;
-        font-weight: bold;
-        position: absolute;
-        right: 15px;
-    }
-
-    .service-item-full .service-button {
-        width: 100%;
-    }
+        .service-item-full .service-button {
+            width: 100%;
+        }
 }
     </style>
+    
 </head>
 <body>
    <header>
@@ -388,17 +364,9 @@
         </div>
     </header>
     <hr class="header-line">
-       <!-- <div class="header-band">
-            <span><a href="https://www.google.com/maps/dir//Cherryhill+Pharmacy,+101+Cherryhill+Blvd+%23114,+London,+ON+N6H+4S4/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x882ef100769e9c69:0x286e828547b7e3b?sa=X&ved=1t:57443&ictx=111">114-101 Cherryhill Blvd, London, ON N6H 4S4</a></span>
-            <span><a href="tel:+15196734554">519-673-4554</a></span>
-            <span><a href="mailto:cherryhillpharmacy1@gmail.com">cherryhillpharmacy1@gmail.com</a></span>
-        </div>
-    </header> -->
     <section class="services">
          <div class="quote-box" style="display: flex; align-items: center;"><video autoplay loop muted playsinline style="pointer-events: none; width: 50%; height: 50%;">
 <source src="slides.mp4" type="video/mp4"/></video>
-             
-             <!-- <img src="bottles.jpg" width=50% height=auto alt="Cherryhill Pharmacy Entrance" style="display: block; margin-left: auto; margin-right: auto;"> -->
         <blockquote style="font-style: italic; font-weight: bold; padding-left: 10px;">"Our pharmacy is proud to serve London & Surrounding Areas. We look forward to being an important part of the community! We place your health and well-being at the forefront of our services."</blockquote>
         </div>
         <div class="transfer-box"><a href="tel:+15196734554" style="color: white; text-decoration: none" >
@@ -411,7 +379,7 @@
                     Minor Ailments Prescribing <span class="plus">+</span>
                 </button>
                 <div class="description">
-                   Minor ailments are described as health conditions that can be managed with minimal treatment and/or self-care strategies. For more information, please feel free to visit <a href="https://www.ocpinfo.com/practice-education/expanded-scope-of-practice/minor-ailment/
+                   We can now prescribe for Minor Ailments. Minor Ailments are described as health conditions that can be managed with minimal treatment and/or self-care strategies. For more information, please feel free to visit <a href="https://www.ocpinfo.com/practice-education/expanded-scope-of-practice/minor-ailment/
 "  target="_blank" rel="noopener">OCP's minor ailment website.</a> 
                 </div>
             </div>
@@ -420,7 +388,7 @@
                     Compounding Services<span class="plus">+</span>
                 </button>
                 <div class="description">
-                    Our pharmacy provides a comprehensive range of compounding services to meet your unique medication needs. Our expert compounding pharmacists are committed to delivering the highest quality compounded medications to ensure your health and well-being.
+                    Cherryhill pharmacy provides a comprehensive range of compounding services to meet your unique medication needs. Our expert compounding pharmacists are committed to delivering the highest quality compounded medications to ensure your health and well-being.
                 </div>
             </div>
             <div class="service-item">
@@ -436,8 +404,8 @@
                     Seniors Discounts <span class="plus">+</span>
                 </button>
                 <div class="description">
-                    Everyday 10% Seniors Discounts on Over-the-counter (OTC) products! 
-                    Enjoy the Special 20% Seniors Discount Every Tuesday on Over-the-counter (OTC) products!
+                    <p>We offer 10% Seniors Discounts EVERYDAY on Over-the-counter (OTC) products at Cherryhill Pharmacy!</p>
+                    <p>Enjoy the Special 20% Seniors Discount Every Tuesday on ALL Over-the-counter (OTC) products!</p>
                 </div>
             </div>
             <div class="service-item">
