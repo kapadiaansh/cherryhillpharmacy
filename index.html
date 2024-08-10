@@ -177,18 +177,6 @@
             margin-bottom: 10px;
         }
 
-        .service-item-full {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: center;
-        }
-        
-         .service-item-full .service-button {
-            width: 48%;
-        }   
-
         .top-button {
             display: none; 
             position: fixed;
@@ -335,7 +323,7 @@
             box-sizing: border-box;
             border-radius: 25px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: justify;
             position: relative;
         }
@@ -347,9 +335,6 @@
             right: 15px;
         }
 
-        .service-item-full .service-button {
-            width: 100%;
-        }
 }
     </style>
     
@@ -442,7 +427,7 @@
             </div>
             <div class="service-item">
                 <button class="service-button" onclick="toggleDescription(this)">
-                    Fast, Friendly and Personalized Service <span class="plus">+</span>
+                    Fast, Friendly & Personalized Service<span class="plus">+</span>
                 </button>
                 <div class="description">
                     At our pharmacy, we are committed to providing fast, friendly, and personalized service. Our dedicated team works efficiently to meet your needs while offering a warm and welcoming atmosphere. We tailor our approach to ensure you receive the best care and attention, making each visit a positive experience.
@@ -494,7 +479,7 @@
                         <p><a href="http://www.cherryhillpharmacy.ca"><img src="web.png" alt="Website Icon" /><span style="text-decoration: underline;">www.cherryhillpharmacy.ca</span></a></p>
         </div>
     </div>
-</section> <button onclick="topFunction()" id="topBtn" class="top-button" title="Go to top">Top</button>
+</section>
     <script>
         function toggleDescription(button) {
             const description = button.nextElementSibling;
