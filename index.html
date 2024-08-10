@@ -343,8 +343,37 @@
     text-align: right;
 }
 @media (max-width: 768px) {
-    .contact-info {
-        font-size: 1em;
+    .service-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .service-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .service-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        box-sizing: border-box;
+        border-radius: 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .service-button .plus {
+        font-size: 1.5em;
+        font-weight: bold;
+        position: absolute;
+        right: 15px;
+    }
+
+    .service-item-full .service-button {
+        width: 100%;
     }
 }
     </style>
@@ -355,7 +384,7 @@
             <div class="header-text">
                 <h1>CHERRYHILL PHARMACY</h1>
             </div>
-            <img src="symbol.png" alt="Symbol" class="header-symbol">
+            <img src="symbol.png" alt="Cherryhill Pharmacy" class="header-symbol">
         </div>
     </header>
     <hr class="header-line">
@@ -432,7 +461,7 @@
                     Free Local Delivery <span class="plus">+</span>
                 </button>
                 <div class="description">
-                    Are you having trouble coming in for your refills, or are you too exhausted to make an extra stop after a long workday? No worries, we offer free Prescriptions Delivery anywhere in London, right to your door for your convenience, ensuring you never miss a dose!
+                    Is it an inconvenience coming in for your refills, or are you too exhausted to make an extra stop after a long workday? No worries, we offer free Prescriptions Delivery anywhere in London, right to your door for your convenience, ensuring you never miss a dose!
                 </div>
             </div>
             <div class="service-item">
