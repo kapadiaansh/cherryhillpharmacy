@@ -7,23 +7,7 @@
     <meta name="description" content="Cherryhill Pharmacy in London, Ontario offers prescription transfers, medication reviews, immunizations, compounding, compliance packaging and free local prescription delivery. Call 519-673-4554.">
     <meta name="author" content="Cherryhill Pharmacy">
     <meta name="robots" content="index, follow">
-    <meta name="color-scheme" content="light dark">
     <link rel="canonical" href="https://www.cherryhillpharmacy.ca/">
-
-    <!-- Apply saved/system theme before first paint, to avoid a flash of the wrong theme -->
-    <script>
-        (function () {
-            try {
-                var stored = localStorage.getItem("cherryhill-theme");
-                var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-                if (stored === "dark" || (!stored && prefersDark)) {
-                    document.documentElement.classList.add("dark");
-                }
-            } catch (e) {
-                /* localStorage unavailable - fall back to light theme */
-            }
-        })();
-    </script>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="symbol.png">
@@ -144,36 +128,15 @@
             --red-tint: rgba(210, 38, 48, 0.08);
             --teal: #2f6f62;
             --charcoal: #1f2328;
+            --grey-text: #4a4f57;
+            --bg-soft: #f7f5f3;
+            --border: #e6e1db;
             --green: #1e8e3e;
             --radius: 14px;
-            --max-width: 1120px;
-            --font-display: "Fraunces", Georgia, "Times New Roman", serif;
-
-            /* Theme-aware tokens - light values (default) */
-            --bg: #ffffff;
-            --bg-elevated: #ffffff;
-            --bg-soft: #f7f5f3;
-            --text: #1f2328;
-            --grey-text: #4a4f57;
-            --border: #e6e1db;
             --shadow: 0 4px 20px rgba(31, 35, 40, 0.08);
             --shadow-hover: 0 14px 34px rgba(31, 35, 40, 0.14);
-        }
-
-        :root.dark {
-            --red-tint: rgba(210, 38, 48, 0.18);
-            --bg: #14171a;
-            --bg-elevated: #1c2126;
-            --bg-soft: #191d22;
-            --text: #eef0f2;
-            --grey-text: #a7adb5;
-            --border: #2b3138;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
-            --shadow-hover: 0 14px 34px rgba(0, 0, 0, 0.55);
-        }
-
-        :root.dark img:not(.no-dark-dim) {
-            opacity: 0.92;
+            --max-width: 1120px;
+            --font-display: "Fraunces", Georgia, "Times New Roman", serif;
         }
 
         * {
@@ -188,10 +151,9 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: #ffffff;
+            color: var(--charcoal);
             line-height: 1.55;
-            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         a {
@@ -252,9 +214,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: var(--bg);
+            background: #ffffff;
             border-bottom: 1px solid var(--border);
-            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
         .nav-row {
@@ -271,7 +232,7 @@
             align-items: center;
             gap: 10px;
             text-decoration: none;
-            color: var(--text);
+            color: var(--charcoal);
         }
 
         .brand img {
@@ -294,7 +255,7 @@
         }
 
         .main-nav a {
-            color: var(--text);
+            color: var(--charcoal);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.98rem;
@@ -324,45 +285,6 @@
             padding: 8px 10px;
             font-size: 1.1rem;
             cursor: pointer;
-            color: var(--text);
-        }
-
-        .theme-toggle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            margin-left: 14px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: var(--bg-elevated);
-            color: var(--text);
-            cursor: pointer;
-            flex-shrink: 0;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--red);
-            color: var(--red);
-        }
-
-        .theme-toggle svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .theme-toggle .icon-moon {
-            display: none;
-        }
-
-        :root.dark .theme-toggle .icon-sun {
-            display: none;
-        }
-
-        :root.dark .theme-toggle .icon-moon {
-            display: block;
         }
 
         /* ---------- Hero ---------- */
@@ -410,7 +332,7 @@
             font-size: clamp(2rem, 4vw, 2.75rem);
             line-height: 1.15;
             margin: 0 0 16px;
-            color: var(--text);
+            color: var(--charcoal);
         }
 
         .hero p.lede {
@@ -475,8 +397,8 @@
         }
 
         .btn-secondary {
-            background: var(--bg-elevated);
-            color: var(--text);
+            background: #fff;
+            color: var(--charcoal);
             border-color: var(--border);
         }
 
@@ -513,7 +435,7 @@
 
         .section-heading h2 {
             font-size: 2rem;
-            color: var(--text);
+            color: var(--charcoal);
             margin: 0 0 12px;
         }
 
@@ -531,7 +453,7 @@
         }
 
         .intro-copy strong {
-            color: var(--text);
+            color: var(--charcoal);
         }
 
         /* ---------- Alternating section backgrounds ---------- */
@@ -576,13 +498,13 @@
         }
 
         .service-card {
-            background: var(--bg-elevated);
+            background: #fff;
             border: 1px solid var(--border);
             border-radius: var(--radius);
             padding: 0;
             box-shadow: var(--shadow);
             overflow: hidden;
-            transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background-color 0.2s ease;
+            transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
         }
 
         .service-card:hover {
@@ -599,7 +521,7 @@
             padding: 20px 24px;
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--charcoal);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -747,7 +669,7 @@
             padding: 20px 4px;
             font-size: 1.05rem;
             font-weight: 700;
-            color: var(--text);
+            color: var(--charcoal);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -795,10 +717,6 @@
             display: block;
         }
 
-        .contact-heading {
-            margin-top: 0;
-        }
-
         .contact-list {
             list-style: none;
             margin: 0;
@@ -836,20 +754,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
-            align-items: flex-start;
             gap: 16px;
-        }
-
-        .footer-grid p {
-            margin: 0 0 8px;
-        }
-
-        .footer-grid p:last-child {
-            margin-bottom: 0;
-        }
-
-        .footer-links {
-            margin-top: 2px;
         }
 
         .footer-links a {
@@ -873,7 +778,7 @@
                 top: 66px;
                 left: 0;
                 right: 0;
-                background: var(--bg);
+                background: #fff;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 0;
@@ -961,11 +866,6 @@
                 <a href="#contact">Contact</a>
                 <a href="tel:+15196734554" class="nav-call-btn">Call 519-673-4554</a>
             </nav>
-            <button class="theme-toggle" id="themeToggle" aria-pressed="false">
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="5.6" y2="5.6"></line><line x1="18.4" y1="18.4" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="5.6" y2="18.4"></line><line x1="18.4" y1="5.6" x2="19.8" y2="4.2"></line></svg>
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.5A8.5 8.5 0 1 1 11.5 3 6.5 6.5 0 0 0 21 12.5z"></path></svg>
-                <span class="visually-hidden">Toggle dark mode</span>
-            </button>
             <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="main-nav">
                 <span aria-hidden="true">&#9776;</span>
                 <span class="visually-hidden">Toggle navigation menu</span>
@@ -1181,7 +1081,7 @@
                 <div class="section-heading">
                     <h2>Your community pharmacy in London, Ontario</h2>
                 </div>
-                <p class="intro-copy">Cherryhill Pharmacy is a community pharmacy serving patients in London and the surrounding area. Our team provides personalized pharmacy care with convenient <strong>prescription transfers</strong>, <strong>medication reviews</strong>, <strong>immunizations</strong>, <strong>compliance packaging</strong>, <strong>compounding services</strong> and <strong>free local prescription delivery</strong>. Located at 101 Cherryhill Blvd, right next to Cherryhill Village Mall, we're proud to serve patients in Cherryhill, Westmount, Oakridge, Byron and the surrounding London communities.</p>
+                <p class="intro-copy">Cherryhill Pharmacy is a community pharmacy serving patients in London and the surrounding area. Our team provides personalized pharmacy care with convenient <strong>prescription transfers</strong>, <strong>medication reviews</strong>, <strong>immunizations</strong>, <strong>compliance packaging</strong>, <strong>compounding services</strong> and <strong>free local prescription delivery</strong>. Conveniently located near Cherryhill Village Mall, 101 Cherryhill Blvd, we're proud to serve patients in Cherryhill, Westmount, Oakridge, Byron and the surrounding London communities.</p>
             </div>
         </section>
 
@@ -1274,7 +1174,7 @@
                     </a>
                 </div>
                 <div>
-                    <h2 class="contact-heading">Contact us</h2>
+                    <h2>Contact us</h2>
                     <ul class="contact-list">
                         <li>
                             <img src="phone.png" alt="" width="22" height="22">
@@ -1375,20 +1275,6 @@
                 mainNav.classList.remove("open");
                 menuToggle.setAttribute("aria-expanded", "false");
             });
-        });
-
-        // Dark mode toggle
-        const themeToggle = document.getElementById("themeToggle");
-        const rootEl = document.documentElement;
-        themeToggle.setAttribute("aria-pressed", String(rootEl.classList.contains("dark")));
-        themeToggle.addEventListener("click", function () {
-            const isDark = rootEl.classList.toggle("dark");
-            themeToggle.setAttribute("aria-pressed", String(isDark));
-            try {
-                localStorage.setItem("cherryhill-theme", isDark ? "dark" : "light");
-            } catch (e) {
-                /* localStorage unavailable - theme choice just won't persist */
-            }
         });
 
         // Open / closed status based on posted hours
