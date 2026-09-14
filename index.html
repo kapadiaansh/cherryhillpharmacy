@@ -12,6 +12,11 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="symbol.png">
 
+    <!-- Fonts: a warm display serif for headings, paired with clean system sans for body copy -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+
     <!-- Open Graph -->
     <meta property="og:site_name" content="Cherryhill Pharmacy">
     <meta property="og:title" content="Cherryhill Pharmacy | London, Ontario Pharmacy &amp; Prescription Services">
@@ -120,6 +125,8 @@
         :root {
             --red: #d22630;
             --red-dark: #a91d26;
+            --red-tint: rgba(210, 38, 48, 0.08);
+            --teal: #2f6f62;
             --charcoal: #1f2328;
             --grey-text: #4a4f57;
             --bg-soft: #f7f5f3;
@@ -127,7 +134,9 @@
             --green: #1e8e3e;
             --radius: 14px;
             --shadow: 0 4px 20px rgba(31, 35, 40, 0.08);
+            --shadow-hover: 0 14px 34px rgba(31, 35, 40, 0.14);
             --max-width: 1120px;
+            --font-display: "Fraunces", Georgia, "Times New Roman", serif;
         }
 
         * {
@@ -149,6 +158,12 @@
 
         a {
             color: var(--red);
+        }
+
+        h1, h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         img {
@@ -226,8 +241,9 @@
         }
 
         .brand-name {
-            font-size: 1.25rem;
-            font-weight: 800;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
             color: var(--red);
             letter-spacing: -0.01em;
         }
@@ -273,11 +289,39 @@
 
         /* ---------- Hero ---------- */
         .hero {
+            position: relative;
+            overflow: hidden;
             background: var(--bg-soft);
             padding: 56px 0 64px;
         }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -140px;
+            right: -140px;
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 32% 32%, rgba(210, 38, 48, 0.12), rgba(210, 38, 48, 0) 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -160px;
+            left: -120px;
+            width: 360px;
+            height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 60% 40%, rgba(47, 111, 98, 0.10), rgba(47, 111, 98, 0) 70%);
+            pointer-events: none;
+        }
+
         .hero-grid {
+            position: relative;
+            z-index: 1;
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 40px;
@@ -304,6 +348,31 @@
             gap: 14px;
         }
 
+        .trust-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 24px;
+            margin-top: 26px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--grey-text);
+        }
+
+        .trust-strip span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .trust-strip svg {
+            width: 16px;
+            height: 16px;
+            color: var(--teal);
+            flex-shrink: 0;
+        }
+
         .btn {
             display: inline-block;
             padding: 14px 26px;
@@ -313,6 +382,7 @@
             font-size: 1rem;
             border: 2px solid transparent;
             cursor: pointer;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
 
         .btn-primary {
@@ -322,6 +392,8 @@
 
         .btn-primary:hover {
             background: var(--red-dark);
+            box-shadow: 0 8px 20px rgba(210, 38, 48, 0.3);
+            transform: translateY(-1px);
         }
 
         .btn-secondary {
@@ -384,6 +456,11 @@
             color: var(--charcoal);
         }
 
+        /* ---------- Alternating section backgrounds ---------- */
+        .bg-soft {
+            background: var(--bg-soft);
+        }
+
         /* ---------- CTA banner ---------- */
         .cta-banner {
             background: linear-gradient(135deg, var(--red), var(--red-dark));
@@ -417,6 +494,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
+            align-items: start;
         }
 
         .service-card {
@@ -426,6 +504,13 @@
             padding: 0;
             box-shadow: var(--shadow);
             overflow: hidden;
+            transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: transparent;
         }
 
         .service-button {
@@ -433,7 +518,7 @@
             background: none;
             border: none;
             text-align: left;
-            padding: 22px 24px;
+            padding: 20px 24px;
             font-size: 1.05rem;
             font-weight: 700;
             color: var(--charcoal);
@@ -444,8 +529,34 @@
             cursor: pointer;
         }
 
-        .service-icon {
-            margin-right: 10px;
+        .service-label {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--red-tint);
+            color: var(--red);
+            margin-right: 14px;
+            flex-shrink: 0;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .icon-badge svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .service-button:hover .icon-badge,
+        .service-button[aria-expanded="true"] .icon-badge {
+            background: var(--red);
+            color: #fff;
         }
 
         .service-button .plus {
@@ -453,12 +564,21 @@
             font-size: 1.4rem;
             font-weight: 700;
             flex-shrink: 0;
+            transition: transform 0.2s ease;
         }
 
         .description {
-            display: none;
-            padding: 0 24px 22px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0 24px;
             color: var(--grey-text);
+            transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+        }
+
+        .description.open {
+            opacity: 1;
+            padding: 0 24px 22px;
         }
 
         .description a {
@@ -484,6 +604,7 @@
         }
 
         .status-dot {
+            position: relative;
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -493,6 +614,30 @@
 
         .status-dot.closed {
             background: var(--red);
+        }
+
+        .status-dot:not(.closed)::after {
+            content: "";
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--green);
+            opacity: 0.6;
+            animation: pulse-ring 2.2s ease-out infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.7);
+                opacity: 0.6;
+            }
+            70% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
         }
 
         .hours-row {
@@ -531,10 +676,25 @@
             cursor: pointer;
         }
 
+        .faq-question .plus {
+            color: var(--red);
+            font-size: 1.4rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
         .faq-answer {
-            display: none;
-            padding: 0 4px 20px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding: 0 4px;
             color: var(--grey-text);
+            transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
+        }
+
+        .faq-answer.open {
+            opacity: 1;
+            padding: 0 4px 20px;
         }
 
         /* ---------- Contact ---------- */
@@ -723,6 +883,20 @@
                         <a href="tel:+15196734554" class="btn btn-primary">Transfer Your Prescription</a>
                         <a href="tel:+15196734554" class="btn btn-secondary">Call 519-673-4554</a>
                     </div>
+                    <div class="trust-strip">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Free local delivery
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Walk-ins welcome
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            All drug plans accepted
+                        </span>
+                    </div>
                 </div>
                 <div class="hero-media">
                     <video autoplay loop muted playsinline poster="symbol.png" aria-hidden="true">
@@ -738,10 +912,15 @@
                     <h2>Our services</h2>
                     <p>Everyday pharmacy care, tailored to you and your family.</p>
                 </div>
-                <div class="service-grid">
+                <div class="service-grid accordion-group">
                     <article class="service-card" id="minor-ailments">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-minor-ailments">
-                            <span><span class="service-icon" aria-hidden="true">&#128138;</span>Minor Ailments Prescribing</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8.5" width="17" height="7" rx="3.5" transform="rotate(-45 12 12)"></rect><line x1="12" y1="7" x2="12" y2="17" transform="rotate(-45 12 12)"></line></svg>
+                                </span>
+                                <span>Minor Ailments Prescribing</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-minor-ailments">
@@ -751,7 +930,12 @@
 
                     <article class="service-card" id="compounding">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-compounding">
-                            <span><span class="service-icon" aria-hidden="true">&#129514;</span>Compounding Services</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"></path><path d="M10 3v6l-5.5 9a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 9V3"></path><line x1="7" y1="15" x2="17" y2="15"></line></svg>
+                                </span>
+                                <span>Compounding Services</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-compounding">
@@ -761,7 +945,12 @@
 
                     <article class="service-card" id="compliance-packaging">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-compliance">
-                            <span><span class="service-icon" aria-hidden="true">&#128203;</span>Compliance Packaging</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M9 3h6v2H9z"></path><line x1="9" y1="10" x2="15" y2="10"></line><line x1="9" y1="14" x2="15" y2="14"></line><line x1="9" y1="18" x2="13" y2="18"></line></svg>
+                                </span>
+                                <span>Compliance Packaging</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-compliance">
@@ -771,7 +960,12 @@
 
                     <article class="service-card" id="seniors-discount">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-seniors">
-                            <span><span class="service-icon" aria-hidden="true">&#127873;</span>Seniors Discounts</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"></line><circle cx="6.5" cy="6.5" r="2.5"></circle><circle cx="17.5" cy="17.5" r="2.5"></circle></svg>
+                                </span>
+                                <span>Seniors Discounts</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-seniors">
@@ -781,7 +975,12 @@
 
                     <article class="service-card" id="immunizations">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-immunizations">
-                            <span><span class="service-icon" aria-hidden="true">&#128137;</span>Immunizations &amp; Vaccines</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="2" x2="22" y2="6"></line><line x1="10.5" y1="9.5" x2="14.5" y2="13.5"></line><path d="M17 7l-9.5 9.5-4 1 1-4L14 4z"></path></svg>
+                                </span>
+                                <span>Immunizations &amp; Vaccines</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-immunizations">
@@ -791,7 +990,12 @@
 
                     <article class="service-card" id="medication-reviews">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-med-review">
-                            <span><span class="service-icon" aria-hidden="true">&#128203;</span>Medication Reviews</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"></rect><path d="M9 3h6v2H9z"></path><polyline points="9 13 11 15 15 11"></polyline></svg>
+                                </span>
+                                <span>Medication Reviews</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-med-review">
@@ -801,7 +1005,12 @@
 
                     <article class="service-card" id="delivery">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-delivery">
-                            <span><span class="service-icon" aria-hidden="true">&#128666;</span>Free Local Delivery</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="13" height="9"></rect><path d="M14 10h4l3 3v3h-7z"></path><circle cx="5.5" cy="18" r="1.7"></circle><circle cx="17.5" cy="18" r="1.7"></circle></svg>
+                                </span>
+                                <span>Free Local Delivery</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-delivery">
@@ -811,7 +1020,12 @@
 
                     <article class="service-card" id="prescription-transfer">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-transfer">
-                            <span><span class="service-icon" aria-hidden="true">&#128203;</span>Easy Prescription Transfers</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                                </span>
+                                <span>Easy Prescription Transfers</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-transfer">
@@ -821,7 +1035,12 @@
 
                     <article class="service-card" id="personalized-service">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-personalized">
-                            <span><span class="service-icon" aria-hidden="true">&#10024;</span>Fast, Friendly Service</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+                                </span>
+                                <span>Fast, Friendly Service</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-personalized">
@@ -831,7 +1050,12 @@
 
                     <article class="service-card" id="drug-plans">
                         <button class="service-button" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="desc-drug-plans">
-                            <span><span class="service-icon" aria-hidden="true">&#128179;</span>All Drug Plans Accepted</span>
+                            <span class="service-label">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line><line x1="6" y1="15" x2="10" y2="15"></line></svg>
+                                </span>
+                                <span>All Drug Plans Accepted</span>
+                            </span>
                             <span class="plus" aria-hidden="true">+</span>
                         </button>
                         <div class="description" id="desc-drug-plans">
@@ -852,7 +1076,7 @@
             </div>
         </section>
 
-        <section id="about">
+        <section id="about" class="bg-soft">
             <div class="wrap">
                 <div class="section-heading">
                     <h2>Your community pharmacy in London, Ontario</h2>
@@ -887,12 +1111,12 @@
             </div>
         </section>
 
-        <section id="faq">
+        <section id="faq" class="bg-soft">
             <div class="wrap">
                 <div class="section-heading">
                     <h2>Frequently asked questions</h2>
                 </div>
-                <div style="max-width: 720px; margin: 0 auto;">
+                <div style="max-width: 720px; margin: 0 auto;" class="accordion-group">
                     <div class="faq-item">
                         <button class="faq-question" onclick="toggleDescription(this)" aria-expanded="false" aria-controls="faq-a1">
                             <span>How do I transfer my prescription to Cherryhill Pharmacy?</span>
@@ -996,14 +1220,46 @@
     <a href="tel:+15196734554" class="mobile-call">Call Cherryhill Pharmacy</a>
 
     <script>
-        function toggleDescription(button) {
+        function closePanel(button) {
             const panel = button.nextElementSibling;
-            const isOpen = panel.style.display === "block";
-            panel.style.display = isOpen ? "none" : "block";
-            button.setAttribute("aria-expanded", String(!isOpen));
+            panel.style.maxHeight = "0px";
+            panel.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
             const plus = button.querySelector(".plus");
             if (plus) {
-                plus.textContent = isOpen ? "+" : "\u2212";
+                plus.textContent = "+";
+            }
+        }
+
+        function openPanel(button) {
+            const panel = button.nextElementSibling;
+            panel.classList.add("open");
+            panel.style.maxHeight = panel.scrollHeight + "px";
+            button.setAttribute("aria-expanded", "true");
+            const plus = button.querySelector(".plus");
+            if (plus) {
+                plus.textContent = "\u2212";
+            }
+        }
+
+        function toggleDescription(button) {
+            const isOpen = button.getAttribute("aria-expanded") === "true";
+
+            // Close every other open item in the same accordion group first,
+            // so only one description is ever visible at a time.
+            const group = button.closest(".accordion-group");
+            if (group) {
+                group.querySelectorAll('[aria-expanded="true"]').forEach(function (otherButton) {
+                    if (otherButton !== button) {
+                        closePanel(otherButton);
+                    }
+                });
+            }
+
+            if (isOpen) {
+                closePanel(button);
+            } else {
+                openPanel(button);
             }
         }
 
